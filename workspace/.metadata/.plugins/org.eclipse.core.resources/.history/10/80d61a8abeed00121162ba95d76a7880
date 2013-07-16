@@ -4,7 +4,6 @@ import com.scottcaruso.lib_practice.FormThings;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -29,9 +28,8 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				
 				EditText money = (EditText) v.getTag();
-				Editable textEntry = money.getText();
-				String textString = textEntry.toString();
-				Log.d("Debug",textString);
+				money.setHint("Test");
+				Log.d("Debug",money.getHint());
 			}
 		});
         

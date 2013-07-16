@@ -18,12 +18,9 @@ public class FormThings {
 		lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);
 		et.setHint(hint);
 		et.setLayoutParams(lp);
-		et.setId(1);
 		
 		Button b = new Button (context);
 		b.setHint(buttonText);
-		b.setId(2);
-		b.setTag(et);
 		
 		ll.addView(et);
 		ll.addView(b);

@@ -31,7 +31,6 @@ public class MainActivity extends Activity {
 				EditText money = (EditText) v.getTag();
 				Editable textEntry = money.getText();
 				String textString = textEntry.toString();
-				Log.d("Debug",textString);
 			}
 		});
         

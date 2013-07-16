@@ -4,12 +4,7 @@ import com.scottcaruso.lib_practice.FormThings;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.text.Editable;
-import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 
 public class MainActivity extends Activity {
@@ -20,20 +15,7 @@ public class MainActivity extends Activity {
         
         LinearLayout ll = new LinearLayout(this);
         LinearLayout entryBox = FormThings.singleEntryWithButton(this, "Type Something", "Click Me!");
-      
-        Button moneyButton = (Button) entryBox.findViewById(2);
-        
-        moneyButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-				EditText money = (EditText) v.getTag();
-				Editable textEntry = money.getText();
-				String textString = textEntry.toString();
-				Log.d("Debug",textString);
-			}
-		});
+        EditText money = entryBox.findViewById(1);
         
         ll.addView(entryBox);
         
