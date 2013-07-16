@@ -17,17 +17,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioGroup;
 
 public class MainActivity extends Activity {
 
+	RadioGroup productOptions;
+	ArrayList<Product> products;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
         LinearLayout ll = new LinearLayout(this);
         LinearLayout entryBox = FormThings.singleEntryWithButton(this, "Type Something", "Click Me!");
-      
+        LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
+        ll.setLayoutParams(lp);
+        ll.setOrientation(LinearLayout.VERTICAL);
+
         Button moneyButton = (Button) entryBox.findViewById(2);
         
         moneyButton.setOnClickListener(new View.OnClickListener() {
@@ -35,12 +43,29 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				
+				int selectedRadioID = productOptions.getCheckedRadioButtonId();
+				String selectedRadioString = String.valueOf(selectedRadioID);
+				Log.i("DEBUG:",selectedRadioString);
+				
+				RadioButton selectedRadio = (RadioButton) productOptions.findViewById(selectedRadioID);
+				String radiotext = (String) selectedRadio.getText();
+				
+				double price = 0;
+				for(int i = 0; i<products.size(); i++)
+				{
+					if (radiotext.compareTo(products.get(i).getName()) == 0) 
+					{
+						price = products.get(i).getPrice();
+					}
+				}
+				
 				EditText money = (EditText) v.getTag();
 				//Editable textEntry = money.getText();
 				//String textString = textEntry.toString();
 				
 				double moneyDouble = Double.parseDouble(money.getText().toString());
-				HashMap<Money, Integer> change = Money.getChange(moneyDouble);
+				double refund = moneyDouble - price;
+				HashMap<Money, Integer> change = Money.getChange(refund);
 				
 				Log.i("BUTTON CLICKED",
 						"Dollar: " + change.get(Money.DOLLAR) + "\r\n" +
@@ -52,7 +77,7 @@ public class MainActivity extends Activity {
 			}
 		});
         
-        ArrayList<Product> products = new ArrayList<Product>();
+        products = new ArrayList<Product>();
         products.add(new Phone("iPhone 4S", 99.99));
         products.add(new Phone("iPhone 5", 199.99));
         products.add(new Phone("Galaxy S3", 199.99));
