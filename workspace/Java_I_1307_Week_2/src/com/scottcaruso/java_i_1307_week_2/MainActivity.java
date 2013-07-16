@@ -1,15 +1,24 @@
 package com.scottcaruso.java_i_1307_week_2;
 
+import com.scottcaruso.lib_practice.FormThings;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.LinearLayout;
 
 public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        
+        LinearLayout ll = new LinearLayout(this);
+        LinearLayout entryBox = FormThings.singleEntryWithButton(this, "Type Something", "Click Me!");
+    
+        ll.addView(entryBox);
+        
+        setContentView(ll);
     }
 
 
