@@ -3,11 +3,10 @@ package com.scottcaruso.java_i_1307_week_2;
 import java.util.HashMap;
 
 import com.scottcaruso.lib_practice.FormThings;
-import com.scottcaruso.practiceecom.Money;
 
 import android.os.Bundle;
 import android.app.Activity;
-//import android.text.Editable;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -32,19 +31,12 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				
 				EditText money = (EditText) v.getTag();
-				//Editable textEntry = money.getText();
-				//String textString = textEntry.toString();
+				Editable textEntry = money.getText();
+				String textString = textEntry.toString();
+				Log.d("Debug",textString);
 				
 				double moneyDouble = Double.parseDouble(money.getText().toString());
-				HashMap<Money, Integer> change = Money.getChange(moneyDouble);
-				
-				Log.i("BUTTON CLICKED",
-						"Dollar: " + change.get(Money.DOLLAR) + "\r\n" +
-						"Quarter: " + change.get(Money.QUARTER) + "\r\n" +
-						"Dime: " + change.get(Money.DIME) + "\r\n" +
-						"Nickel: " + change.get(Money.NICKEL) + "\r\n" +
-						"Penny: " + change.get(Money.PENNY) + "\r\n"
-						);	
+				HashMap<Money, Integer> change = Money.getChange()
 			}
 		});
         

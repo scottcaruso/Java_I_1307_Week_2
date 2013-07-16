@@ -1,0 +1,24 @@
+package com.scottcaruso.practiceecom;
+
+import java.util.HashMap;
+
+public enum Money {
+
+	PENNY(1),
+	NICKEL(5),
+	DIME(10),
+	QUARTER(25),
+	DOLLAR(100);
+	
+	private final int value;
+	
+	Money(int value){
+		this.value = value;
+	}
+	
+	public static HashMap<Money, Integer> getChange(double amount){
+		HashMap<Money, Integer> change = new HashMap<Money, Integer>();
+		
+		return change;
+	}
+}
