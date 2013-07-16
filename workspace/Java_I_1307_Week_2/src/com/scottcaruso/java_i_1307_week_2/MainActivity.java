@@ -1,9 +1,12 @@
 package com.scottcaruso.java_i_1307_week_2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.scottcaruso.lib_practice.FormThings;
 import com.scottcaruso.practiceecom.Money;
+import com.scottcaruso.practiceecom.Phone;
+import com.scottcaruso.practiceecom.Product;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -47,6 +50,13 @@ public class MainActivity extends Activity {
 						);	
 			}
 		});
+        
+        ArrayList<Product> products = new ArrayList<Product>();
+        products.add(new Phone("iPhone 4S", 99.99));
+        products.add(new Phone("iPhone 5", 199.99));
+        products.add(new Phone("Galaxy S3", 199.99));
+        products.add(new Phone("Galaxy Nexus", 349.99));
+        products.add(new Phone("HTC One X", 99.99));
         
         ll.addView(entryBox);
         

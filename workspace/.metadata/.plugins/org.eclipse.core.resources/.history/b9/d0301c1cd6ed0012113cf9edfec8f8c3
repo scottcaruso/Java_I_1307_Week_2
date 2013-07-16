@@ -1,0 +1,13 @@
+package com.scottcaruso.practiceecom;
+
+public interface Product {
+
+	//set the name of a product
+	public boolean setName(String name);
+	
+	//set the price of a product
+	
+	//get the name of a product
+	
+	//get the price of a product
+}
