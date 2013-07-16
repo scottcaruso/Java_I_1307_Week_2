@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
         
         RadioGroup productOptions = FormThings.getOptions(this, productNames);
         
-        ll.addView(productOptions);
+        ll.addView(ll);
         
         ll.addView(entryBox);
         

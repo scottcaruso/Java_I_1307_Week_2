@@ -40,10 +40,8 @@ public class FormThings {
 		{
 			RadioButton rb = new RadioButton(context);
 			rb.setText(options[i]);
-			boxes.addView(rb);
+			boxes.addView(boxes);
 		}
-		
-		return boxes;
 	}
 	
 }
