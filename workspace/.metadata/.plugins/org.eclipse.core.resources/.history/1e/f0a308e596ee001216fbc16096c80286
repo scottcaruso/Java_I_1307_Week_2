@@ -1,0 +1,16 @@
+package com.scottcaruso.practiceecom;
+
+import org.json.JSONObject;
+
+public class json {
+
+	public static JSONObject buildJSON()
+	{
+		//create Songs JSON
+		JSONObject songsObject = new JSONObject();
+		
+		JSONObject queryObject = new JSONObject();
+		
+	}
+	
+}
