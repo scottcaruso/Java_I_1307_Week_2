@@ -1,0 +1,17 @@
+package com.scottcaruso.utilities;
+
+import org.json.JSONObject;
+
+public class json 
+{
+	public static JSONObject createJSONObjectForUpload()
+	{
+
+	}
+	
+	public static String readJSON(String selected)
+	{
+
+	}
+	
+}
