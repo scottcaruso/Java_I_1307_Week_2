@@ -14,3 +14,5 @@
 1374124682617	Rename local variable 'b'
 1374133727326	Rename method 'createJSONObject'
 1374142452935	Delete element
+1374145739647	Rename type 'FormGenerator'
+1374145755631	Rename package 'com.scottcaruso.formgenerator'

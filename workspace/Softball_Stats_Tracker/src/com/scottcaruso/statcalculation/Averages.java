@@ -1,11 +1,18 @@
+/* Scott Caruso - Java 1307 - Week 2 Assignment
+ * 
+ * 7/18/2013
+ */
 package com.scottcaruso.statcalculation;
 
 import java.text.NumberFormat;
 
+
+//This class is not used in this version, but will be used later on. It will generate Batting and Slugging averages based on real data.
 public class Averages {
 	
 	private static NumberFormat threeDecimals = NumberFormat.getInstance();
 	
+	//Formatting doesn't work in Week 2- it will be working when the data is fully surfaced in later weeks.
 	public static NumberFormat setFormatting(NumberFormat format,int numberOfDigits)
 	{
 		format.setMaximumFractionDigits(numberOfDigits);

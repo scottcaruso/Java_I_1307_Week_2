@@ -1,3 +1,7 @@
+/* Scott Caruso - Java 1307 - Week 2 Assignment
+ * 
+ * 7/18/2013
+ */
 package com.scottcaruso.utilities;
 
 import org.json.JSONException;
@@ -58,7 +62,7 @@ public class JSONManagement
 		return statDetails;
 	}
 	
-	//creates three JSON object based on the available data
+	//creates third JSON object based on the available data
 	public static JSONObject createJSONObjectThree(Context context)
 	{	
 		Resources res = context.getResources();
@@ -82,6 +86,7 @@ public class JSONManagement
 		return statDetails;
 	}
 	
+	//Creates one large JSON object out of hte smaller ones above
 	public static JSONObject createMasterJSONObject(JSONObject one, JSONObject two, JSONObject three)
 	{		
 		final JSONObject thisObject = new JSONObject();
@@ -96,7 +101,7 @@ public class JSONManagement
 		return thisObject;
 	}
 	
-	//Get the JSON data form the Cloudant service - not used in project 1
+	//Get the JSON data form the Cloudant service - not used in project yet
 	public static JSONObject getJSONFromDataSource()
 	{
 		return null;

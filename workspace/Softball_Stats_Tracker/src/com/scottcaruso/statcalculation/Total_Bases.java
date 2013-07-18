@@ -1,3 +1,7 @@
+/* Scott Caruso - Java 1307 - Week 2 Assignment
+ * 
+ * 7/18/2013
+ */
 package com.scottcaruso.statcalculation;
 
 
@@ -23,5 +27,4 @@ public enum Total_Bases {
 		
 		return totalBases;
 	}
-	
 }

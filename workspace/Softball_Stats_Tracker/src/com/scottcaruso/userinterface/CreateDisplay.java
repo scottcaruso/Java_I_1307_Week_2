@@ -1,13 +1,23 @@
+/* Scott Caruso - Java 1307 - Week 2 Assignment
+ * 
+ * 7/18/2013
+ */
 package com.scottcaruso.userinterface;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.scottcaruso.statcalculation.Averages;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.TextView;
 
+
+/*This class is exclusively for creating the display that shows the statistics at the bottom of the screen when the user clicks the
+ *appropriate button.
+ */
 public class CreateDisplay {
 	
 	public static TextView createStatDisplay(JSONObject object, Context context)
@@ -38,6 +48,9 @@ public class CreateDisplay {
 			String triples = null;
 			String homeruns = null;
 			String rbis = null;
+			//The floats need to be configured to use the appropriate number of characters still.
+			float average = 0.0f;
+			float slugging = 0.0f;
 			try {
 				opponent = currentObject.getString("Opponent");
 				date = currentObject.getString("Date");
@@ -53,6 +66,9 @@ public class CreateDisplay {
 				homeruns = String.valueOf(intHomers);
 				int intRBI = currentObject.getInt("RBIs");
 				rbis = String.valueOf(intRBI);
+				//Use Averages class to get BA and slugging percentages.
+				average = Averages.battingAverage(intAtBats, intHits);
+				slugging = Averages.sluggingPercentage(intAtBats, intHits, intDoubles, intTriples, intHomers);
 			} catch (JSONException e) {
 				String debugString = (opponent + " " + date + " " + atBats + " " + hits + " " + doubles + " " + triples + " " + homeruns + " " + rbis);
 						Log.i("Strings: ",debugString);
@@ -61,7 +77,8 @@ public class CreateDisplay {
 								+ "Opponent: " + opponent + "\r\n"
 								+ "Date: " + date + "\r\n"
 								+ "At Bats: " + atBats + "  Hits: " + hits + "  Doubles: " + doubles + "  Triples: " + triples +
-								"  Home Runs: " + homeruns + "  RBIs: " + rbis + "\r\n");
+								"  Home Runs: " + homeruns + "  RBIs: " + rbis + 
+								" Batting Average: " + average + "  Slugging: " + slugging + "\r\n");
 		}
 		
 		return thisTextView;
