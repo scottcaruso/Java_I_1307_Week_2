@@ -3,7 +3,6 @@ package com.scottcaruso.utilities;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
