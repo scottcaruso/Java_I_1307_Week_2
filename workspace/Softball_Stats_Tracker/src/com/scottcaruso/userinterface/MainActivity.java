@@ -199,11 +199,16 @@ public class MainActivity extends Activity {
         scroll.addView(mainLayout);
         setContentView(scroll);
         
-        JSONObject gameOneDetails = JSONManagement.createJSONObjectOne(this);
-        String jsonString = gameOneDetails.toString();
-        Log.i("Test:",jsonString);
+        //Generate a dummy/static JSON object with statistics in it.
+        JSONObject objectOne = JSONManagement.createJSONObjectOne(this);
+        JSONObject objectTwo = JSONManagement.createJSONObjectTwo(this);
+        JSONObject objectThree = JSONManagement.createJSONObjectThree(this);
+        JSONObject stats = JSONManagement.createMasterJSONObject(objectOne, objectTwo, objectThree);
+        
+        TextView statView = CreateDisplay.createStatDisplay(stats, this);
+        mainLayout.addView(statView);
+        
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

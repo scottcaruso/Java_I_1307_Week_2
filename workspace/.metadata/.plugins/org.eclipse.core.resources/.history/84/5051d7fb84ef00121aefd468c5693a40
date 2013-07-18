@@ -1,0 +1,15 @@
+package com.scottcaruso.userinterface;
+
+import org.json.JSONObject;
+
+public class CreateDisplay {
+
+	public static LinearLayout createStatDisplay(JSONObject object)
+	{
+		JSONObject firstObject = object.getJSONObject("Game 1");
+		JSONObject secondObject = object.getJSONObject("Game 2");
+		JSONObject thirdObject = object.getJSONObject("Game 3");
+		
+	}
+	
+}

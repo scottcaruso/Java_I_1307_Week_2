@@ -1,0 +1,63 @@
+package com.scottcaruso.userinterface;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.content.Context;
+import android.view.Gravity;
+import android.widget.TextView;
+
+public class CreateDisplay {
+	
+	public static TextView createStatDisplay(JSONObject object, Context context)
+	{
+		JSONObject firstObject = null;
+		JSONObject secondObject = null;
+		JSONObject thirdObject = null;
+		try {
+			firstObject = object.getJSONObject("Game 1");
+			secondObject = object.getJSONObject("Game 2");
+			thirdObject = object.getJSONObject("Game 3");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		JSONObject [] arrayOfObjects = {firstObject,secondObject,thirdObject};
+		
+		TextView thisTextView = new TextView (context);
+		thisTextView.setGravity(Gravity.CENTER);
+		for (int x = 1; x <= arrayOfObjects.length; x++)
+		{
+			JSONObject currentObject = arrayOfObjects[x-1];
+			String gameNumber = String.valueOf(x);
+			String opponent = null;
+			String date = null;
+			String atBats = null;
+			String hits = null;
+			String doubles = null;
+			String triples = null;
+			String homeruns = null;
+			String rbis = null;
+			try {
+				opponent = currentObject.getJSONObject("Opponent").toString();
+				date = currentObject.getJSONObject("Date").toString();
+				atBats = currentObject.getJSONObject("At Bats").toString();
+				hits = currentObject.getJSONObject("Hits").toString();
+				doubles = currentObject.getJSONObject("Doubles").toString();
+				triples = currentObject.getJSONObject("Triples").toString();
+				homeruns = currentObject.getJSONObject("Home Runs").toString();
+				rbis = currentObject.getJSONObject("RBIs").toString();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			thisTextView.append("Game #" + gameNumber + "\r\n"
+								+ "Opponent: " + opponent + "\r\n"
+								+ "Date: " + date + "\r\n"
+								+ "At Bats: " + atBats + "  Hits: " + hits + "  Doubles: " + doubles + "  Triples: " + triples +
+								"  Home Runs: " + homeruns + "  RBIs: " + rbis + "\r\n");
+		}
+		
+		return thisTextView;
+	}
+	
+}

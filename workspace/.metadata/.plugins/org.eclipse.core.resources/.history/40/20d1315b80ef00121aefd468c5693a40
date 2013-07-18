@@ -1,0 +1,101 @@
+package com.scottcaruso.utilities;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.R;
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+
+public class JSONManagement 
+{
+	
+	//creates one JSON object based on the available data
+	public static JSONObject createJSONObjectOne(Context context)
+	{	
+		Resources res = context.getResources();
+		
+		final JSONObject statDetails = new JSONObject();
+		try {
+			statDetails.put("Date", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.string.gameone_date));
+			statDetails.put("Opponent", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.string.gameone_opponent));
+			statDetails.put("At Bats", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gameone_atbats));
+			statDetails.put("Hits", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gameone_hits));
+			statDetails.put("Doubles", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gameone_doubles));
+			statDetails.put("Triples", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gameone_triples));
+			statDetails.put("Home Runs", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gameone_homeruns));
+			statDetails.put("RBIs", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gameone_rbis));
+			gameDetails.put("Game 1", statDetails);
+		} catch (NotFoundException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	
+		return statDetails;
+	}
+	
+	//creates second JSON object based on the available data
+	public static JSONObject createJSONObjectTwo(Context context)
+	{	
+		Resources res = context.getResources();
+		
+		final JSONObject statDetails = new JSONObject();
+		try {
+			statDetails.put("Date", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.string.gametwo_date));
+			statDetails.put("Opponent", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.string.gametwo_opponent));
+			statDetails.put("At Bats", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gametwo_atbats));
+			statDetails.put("Hits", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gametwo_hits));
+			statDetails.put("Doubles", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gametwo_doubles));
+			statDetails.put("Triples", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gametwo_triples));
+			statDetails.put("Home Runs", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gametwo_homeruns));
+			statDetails.put("RBIs", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gametwo_rbis));
+			gameDetails.put("Game 1", statDetails);
+		} catch (NotFoundException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	
+		return statDetails;
+	}
+	
+	//creates three JSON object based on the available data
+	public static JSONObject createJSONObjectThree(Context context)
+	{	
+		Resources res = context.getResources();
+		
+		final JSONObject statDetails = new JSONObject();
+		try {
+			statDetails.put("Date", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.string.gamethree_date));
+			statDetails.put("Opponent", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.string.gamethree_opponent));
+			statDetails.put("At Bats", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gamethree_atbats));
+			statDetails.put("Hits", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gamethree_hits));
+			statDetails.put("Doubles", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gamethree_doubles));
+			statDetails.put("Triples", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gamethree_triples));
+			statDetails.put("Home Runs", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gamethree_homeruns));
+			statDetails.put("RBIs", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gamethree_rbis));
+		} catch (NotFoundException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	
+		return statDetails;
+	}
+	
+	public static JSONObject createMasterJSONObject()
+	{
+		final JSONObject thisObject = new JSONObject();
+		thisObject.put(", value)
+		
+		return thisObject;
+	}
+	
+	//Get the JSON data form the Cloudant service - not used in project 1
+	public static JSONObject getJSONFromDataSource()
+	{
+		return null;
+	}
+}
