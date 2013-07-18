@@ -1,0 +1,27 @@
+package com.scottcaruso.utilities;
+
+import org.json.JSONObject;
+
+import android.content.res.Resources;
+
+public class JSONManagement
+{
+	
+	
+	//creates a JSON object based on the available data
+	public static JSONObject createJSONObject(context)
+	{	
+		
+		JSONObject thisJSONObject = new JSONObject();
+		thisJSONObject.put("At Bats",)
+		
+		
+		return thisJSONObject;
+	}
+	
+	//Get the JSON data form the Cloudant service
+	public static JSONObject getJSONFromDataSource()
+	{
+		return null;
+	}
+}

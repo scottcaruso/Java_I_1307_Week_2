@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+<!--     Static data to make a JSON object. -->
+    <integer name="gameone_atbats">162</integer>
+    <integer name="gameone_hits">162</integer>
+    <integer name="gameone_doubles">162</integer>
+    <integer name="gameone_triples">162</integer>
+    <integer name="gameone_homeruns">162</integer>
+    <integer name="gameone_rbis">162</integer>
+
+<!--     Static data to make a JSON object. -->
+    <integer name="gametwo_atbats">162</integer>
+    <integer name="gametwo_hits">162</integer>
+    <integer name="gametwo_doubles">162</integer>
+    <integer name="gametwo_triples">162</integer>
+    <integer name="gametwo_homeruns">162</integer>
+    <integer name="gametwo_rbis">162</integer>
+    
+</resources>

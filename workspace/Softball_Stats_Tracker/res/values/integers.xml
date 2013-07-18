@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+<!--     Static data about a first game to make a JSON object. -->
+    <integer name="gameone_atbats">4</integer>
+    <integer name="gameone_hits">3</integer>
+    <integer name="gameone_doubles">1</integer>
+    <integer name="gameone_triples">0</integer>
+    <integer name="gameone_homeruns">1</integer>
+    <integer name="gameone_rbis">5</integer>
+
+<!--     Static data about a second game to make a JSON object. -->
+    <integer name="gametwo_atbats">5</integer>
+    <integer name="gametwo_hits">1</integer>
+    <integer name="gametwo_doubles">0</integer>
+    <integer name="gametwo_triples">1</integer>
+    <integer name="gametwo_homeruns">0</integer>
+    <integer name="gametwo_rbis">1</integer>
+    
+<!--     Static data about a third game to make a JSON object. -->
+    <integer name="gamethree_atbats">4</integer>
+    <integer name="gamethree_hits">2</integer>
+    <integer name="gamethree_doubles">0</integer>
+    <integer name="gamethree_triples">0</integer>
+    <integer name="gamethree_homeruns">0</integer>
+    <integer name="gamethree_rbis">2</integer>
+    
+</resources>

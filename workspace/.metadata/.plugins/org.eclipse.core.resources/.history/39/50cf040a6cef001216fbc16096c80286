@@ -1,0 +1,5 @@
+package com.scottcaruso.statcalculation;
+
+public enum Total_Bases {
+
+}

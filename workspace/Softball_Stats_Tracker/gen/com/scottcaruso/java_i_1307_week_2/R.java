@@ -8,6 +8,9 @@
 package com.scottcaruso.java_i_1307_week_2;
 
 public final class R {
+    public static final class array {
+        public static final int numericalvalues=0x7f070000;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -24,18 +27,55 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080000;
+        public static final int action_settings=0x7f0a0000;
+    }
+    public static final class integer {
+        /**      Static data about a first game to make a JSON object. 
+         */
+        public static final int gameone_atbats=0x7f050000;
+        public static final int gameone_doubles=0x7f050002;
+        public static final int gameone_hits=0x7f050001;
+        public static final int gameone_homeruns=0x7f050004;
+        public static final int gameone_rbis=0x7f050005;
+        public static final int gameone_triples=0x7f050003;
+        /**      Static data about a third game to make a JSON object. 
+         */
+        public static final int gamethree_atbats=0x7f05000c;
+        public static final int gamethree_doubles=0x7f05000e;
+        public static final int gamethree_hits=0x7f05000d;
+        public static final int gamethree_homeruns=0x7f050010;
+        public static final int gamethree_rbis=0x7f050011;
+        public static final int gamethree_triples=0x7f05000f;
+        /**      Static data about a second game to make a JSON object. 
+         */
+        public static final int gametwo_atbats=0x7f050006;
+        public static final int gametwo_doubles=0x7f050008;
+        public static final int gametwo_hits=0x7f050007;
+        public static final int gametwo_homeruns=0x7f05000a;
+        public static final int gametwo_rbis=0x7f05000b;
+        public static final int gametwo_triples=0x7f050009;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int main=0x7f090000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050002;
+        public static final int action_settings=0x7f060001;
+        public static final int app_name=0x7f060000;
+        /**      Static data about a first game to make a JSON object. 
+         */
+        public static final int gameone_date=0x7f060002;
+        public static final int gameone_opponent=0x7f060003;
+        /**      Static data about a third game to make a JSON object. 
+         */
+        public static final int gamethree_date=0x7f060006;
+        public static final int gamethree_opponent=0x7f060007;
+        /**      Static data about a second game to make a JSON object. 
+         */
+        public static final int gametwo_date=0x7f060004;
+        public static final int gametwo_opponent=0x7f060005;
     }
     public static final class style {
         /** 
@@ -59,10 +99,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f080001;
     }
 }

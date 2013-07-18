@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <integer name="gameone_atbats">162</integer>
+    <integer name="gameone_hits">162</integer>
+    <integer name="gameone_doubles">162</integer>
+    <integer name="gameone_triples">162</integer>
+    <integer name="gameone_homeruns">162</integer>
+    <integer name="gameone_rbis">162</integer>
+    <integer name="gamesinaseason">162</integer>
+    <integer name="gamesinaseason">162</integer>
+    <integer name="gamesinaseason">162</integer>
+    <integer name="gamesinaseason">162</integer>
+    
+</resources>

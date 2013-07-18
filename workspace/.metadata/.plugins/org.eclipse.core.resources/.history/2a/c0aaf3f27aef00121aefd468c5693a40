@@ -1,0 +1,43 @@
+package com.scottcaruso.utilities;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.R;
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+
+public class JSONManagement 
+{
+	
+	//creates a JSON object based on the available data
+	public static JSONObject createJSONObject(Context context)
+	{	
+		Resources res = context.getResources();
+		JSONObject thisJSONObject = new JSONObject();
+		try {
+			thisJSONObject.put("At Bats", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gameone_atbats));
+			thisJSONObject.put("Hits", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gameone_hits));
+			thisJSONObject.put("Doubles", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gameone_doubles));
+			thisJSONObject.put("Triples", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gameone_atbats));
+			thisJSONObject.put("Home Runs", res.getInteger(com.scottcaruso.java_i_1307_week_2.R.integer.gameone_atbats));
+		} catch (NotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return thisJSONObject;
+	}
+	
+	//Get the JSON data form the Cloudant service
+	public static JSONObject getJSONFromDataSource()
+	{
+		return null;
+	}
+}

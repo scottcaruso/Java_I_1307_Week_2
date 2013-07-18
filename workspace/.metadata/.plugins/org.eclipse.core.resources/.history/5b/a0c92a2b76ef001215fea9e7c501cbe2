@@ -1,0 +1,22 @@
+package com.scottcaruso.utilities;
+
+import org.json.JSONObject;
+
+public class JSONManagement 
+{
+	//creates a JSON object based on the available data
+	public static JSONObject createJSONObject()
+	{	
+		JSONObject thisJSONObject = new JSONObject();
+		
+		
+		
+		return thisJSONObject;
+	}
+	
+	//Get the JSON data form the Cloudant service
+	public static JSONObject getJSONFromDataSource()
+	{
+		return null;
+	}
+}

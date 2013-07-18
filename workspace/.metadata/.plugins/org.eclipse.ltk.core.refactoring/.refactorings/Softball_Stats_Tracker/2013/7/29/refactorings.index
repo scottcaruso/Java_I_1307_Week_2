@@ -1,2 +1,15 @@
 1374036997511	Move compilation unit
 1374037682269	Rename type 'json'
+1374114270192	Rename package 'com.scottcaruso.java_i_1307_week_2'
+1374114277873	Copy package
+1374114291966	Delete element
+1374114314968	Rename local variable 'll'
+1374114431712	Rename package 'com.scottcaruso.lib_practice'
+1374114444903	Rename type 'FormThings'
+1374116859248	Rename resource 'strings_for_spinners.xml'
+1374116947898	Delete element
+1374118718220	Rename local variable 'gamesPlayedSpinner'
+1374118736332	Rename local variable 'gamesPlayedLabel'
+1374119271743	Rename field 'textViews'
+1374124682617	Rename local variable 'b'
+1374133727326	Rename method 'createJSONObject'

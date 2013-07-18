@@ -1,0 +1,10 @@
+package com.scottcaruso.statcalculation;
+
+public enum Total_Bases {
+
+	SINGLE(1);
+	DOUBLE(2);
+	TRIPLE(3);
+	HOMERUN(4);
+	
+}

@@ -1,0 +1,16 @@
+package com.scottcaruso.statcalculation;
+
+import java.text.NumberFormat;
+
+public class Averages {
+
+	public static float battingAverage(int atbats, int hits)
+	{
+		NumberFormat threeDecimals = NumberFormat.getInstance();
+		threeDecimals.setMaximumFractionDigits(3);
+		float ba = (float) atbats/hits;
+		
+		return ba;
+	}
+	
+}
