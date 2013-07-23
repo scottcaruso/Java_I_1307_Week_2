@@ -31,6 +31,10 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+	//RadioGroup productOptions;
+	//ArrayList<Product> products;
+	
+	
 	ArrayList<Spinner> spinners;
 	ArrayList<TextView> labels;
 	TextView statView;
