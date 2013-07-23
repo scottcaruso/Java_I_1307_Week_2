@@ -1,0 +1,9 @@
+package com.scottcaruso.utilities;
+
+import android.net.ConnectivityManager;
+
+public class Connection_Verification {
+	
+	ConnectivityManager cm = Context.getSystemService(this.CONNECTIVITY_SERVICE);
+	
+}

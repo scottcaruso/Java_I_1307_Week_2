@@ -156,12 +156,12 @@ public class MainActivity extends Activity {
         mainLayout.addView(addNewGameButton);
         mainLayout.addView(displayStats);
         
-        boolean connectionState = Connection_Verification.areWeConnected(this);
-        Log.i("State",String.valueOf(connectionState));
-        
         //Add the layout to the scroll view and show it
         scroll.addView(mainLayout);
         setContentView(scroll);
+        
+        //boolean connectionState = Connection_Verification.areWeConnected(this);
+        //Log.d("Connection status:",String.valueOf(connectionState));
         
     }
 

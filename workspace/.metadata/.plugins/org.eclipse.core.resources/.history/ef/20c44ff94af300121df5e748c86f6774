@@ -17,7 +17,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.res.Resources;
-import android.hardware.Camera.Area;
 //import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
@@ -156,12 +155,12 @@ public class MainActivity extends Activity {
         mainLayout.addView(addNewGameButton);
         mainLayout.addView(displayStats);
         
-        boolean connectionState = Connection_Verification.areWeConnected(this);
-        Log.i("State",String.valueOf(connectionState));
-        
         //Add the layout to the scroll view and show it
         scroll.addView(mainLayout);
         setContentView(scroll);
+        
+        Connection_Verification cv = new Connection_Verification();
+        cv.areWeConnected(this);
         
     }
 

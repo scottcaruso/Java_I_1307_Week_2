@@ -157,7 +157,7 @@ public class MainActivity extends Activity {
         mainLayout.addView(displayStats);
         
         boolean connectionState = Connection_Verification.areWeConnected(this);
-        Log.i("State",String.valueOf(connectionState));
+        Log.d("Connection status:",String.valueOf(connectionState));
         
         //Add the layout to the scroll view and show it
         scroll.addView(mainLayout);
