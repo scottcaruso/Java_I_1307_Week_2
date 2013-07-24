@@ -12,12 +12,11 @@ import com.scottcaruso.java_i_1307_week_2.R;
 import com.scottcaruso.uielementgenerator.UIElementCreator;
 import com.scottcaruso.utilities.Connection_Verification;
 import com.scottcaruso.utilities.JSONManagement;
+import com.scottcaruso.utilities.RetrieveData;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.res.Resources;
-import android.hardware.Camera.Area;
 //import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
@@ -158,6 +157,13 @@ public class MainActivity extends Activity {
         
         boolean connectionState = Connection_Verification.areWeConnected(this);
         Log.i("State",String.valueOf(connectionState));
+        
+        //String responseString = RetrieveData.getResponse("https://scottcaruso.cloudant.com/softballstats/_all_docs");
+        //Log.i("State",responseString);
+       
+        RetrieveData rd = new RetrieveData();
+        rd.retrieveCloudantData("https://scottcaruso.cloudant.com/softballstats/_all_docs");
+        
         
         //Add the layout to the scroll view and show it
         scroll.addView(mainLayout);

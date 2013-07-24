@@ -1,0 +1,21 @@
+package com.scottcaruso.utilities;
+
+import java.io.BufferedInputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+
+public class RetrieveData {
+
+	public static String getResponse(URL url)
+	{
+		String response = "";
+		
+		URLConnection connection = url.openConnection();
+		BufferedInputStream bin = new BufferedInputStream(connection.getInputStream());
+		
+		
+		return null;
+	}
+		
+}
