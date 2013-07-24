@@ -30,16 +30,8 @@ public class RetrieveData {
 
 		try 
 		{
-			URLConnection connection = url.openConnection();
-			Log.e("Error", String.valueOf(connection));
-			BufferedInputStream bin = null;
-			try {
-				bin = new BufferedInputStream(connection.getInputStream());
-			} catch (Exception e) {
-				Log.e("Error","Failed at BufferedInputStream");
-				e.printStackTrace();
-			}
-			//Log.e("Error", String.valueOf(bin));
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			BufferedInputStream bin = new BufferedInputStream(connection.getInputStream());
 			
 			byte[] contentBytes = new byte[1024];
 			int bytesRead = 0;
@@ -50,8 +42,7 @@ public class RetrieveData {
 				response = new String(contentBytes,0,bytesRead);
 				responseBuffer.append(response);
 			}
-			
-			Log.i("Data:",responseBuffer.toString());
+		
 			return responseBuffer.toString();
 		
 		} catch (IOException e) {

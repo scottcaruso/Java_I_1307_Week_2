@@ -162,7 +162,7 @@ public class MainActivity extends Activity {
         //Log.i("State",responseString);
        
         RetrieveData rd = new RetrieveData();
-        rd.retrieveCloudantData("http://scottcaruso:navybean@scottcaruso.cloudant.com/softballstats/_all_docs");
+        rd.retrieveCloudantData("https://scottcaruso:navybean@scottcaruso.cloudant.com/softballstats/_all_docs");
         
         
         //Add the layout to the scroll view and show it

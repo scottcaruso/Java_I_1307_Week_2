@@ -31,15 +31,8 @@ public class RetrieveData {
 		try 
 		{
 			URLConnection connection = url.openConnection();
-			Log.e("Error", String.valueOf(connection));
-			BufferedInputStream bin = null;
-			try {
-				bin = new BufferedInputStream(connection.getInputStream());
-			} catch (Exception e) {
-				Log.e("Error","Failed at BufferedInputStream");
-				e.printStackTrace();
-			}
-			//Log.e("Error", String.valueOf(bin));
+			BufferedInputStream bin = new BufferedInputStream(connection.getInputStream());
+			Log.e("Error", String.valueOf(bin));
 			
 			byte[] contentBytes = new byte[1024];
 			int bytesRead = 0;

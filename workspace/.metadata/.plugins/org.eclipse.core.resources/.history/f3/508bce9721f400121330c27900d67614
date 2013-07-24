@@ -2,10 +2,12 @@ package com.scottcaruso.utilities;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -15,13 +17,22 @@ public class RetrieveData {
 	public void retrieveCloudantData(String urlString)
 	{
 		URL dataURL;
+		String encodedString;
 		try {
-			dataURL = new URL(urlString);
+			encodedString = URLEncoder.encode(urlString,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			dataURL = new URL(encodedString);
 			CloudantRequest cloudReq = new CloudantRequest();
 			cloudReq.execute(dataURL);
 		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
+
 	}
 	
 	public static String getResponse(URL url)
@@ -31,15 +42,7 @@ public class RetrieveData {
 		try 
 		{
 			URLConnection connection = url.openConnection();
-			Log.e("Error", String.valueOf(connection));
-			BufferedInputStream bin = null;
-			try {
-				bin = new BufferedInputStream(connection.getInputStream());
-			} catch (Exception e) {
-				Log.e("Error","Failed at BufferedInputStream");
-				e.printStackTrace();
-			}
-			//Log.e("Error", String.valueOf(bin));
+			BufferedInputStream bin = new BufferedInputStream(connection.getInputStream());
 			
 			byte[] contentBytes = new byte[1024];
 			int bytesRead = 0;

@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -16,6 +17,7 @@ public class RetrieveData {
 	{
 		URL dataURL;
 		try {
+			encodedString = URLEncoder.encode(urlString);
 			dataURL = new URL(urlString);
 			CloudantRequest cloudReq = new CloudantRequest();
 			cloudReq.execute(dataURL);
@@ -31,15 +33,7 @@ public class RetrieveData {
 		try 
 		{
 			URLConnection connection = url.openConnection();
-			Log.e("Error", String.valueOf(connection));
-			BufferedInputStream bin = null;
-			try {
-				bin = new BufferedInputStream(connection.getInputStream());
-			} catch (Exception e) {
-				Log.e("Error","Failed at BufferedInputStream");
-				e.printStackTrace();
-			}
-			//Log.e("Error", String.valueOf(bin));
+			BufferedInputStream bin = new BufferedInputStream(connection.getInputStream());
 			
 			byte[] contentBytes = new byte[1024];
 			int bytesRead = 0;

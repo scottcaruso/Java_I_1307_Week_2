@@ -32,11 +32,11 @@ public class RetrieveData {
 		{
 			URLConnection connection = url.openConnection();
 			Log.e("Error", String.valueOf(connection));
-			BufferedInputStream bin = null;
+			BufferedInputStream bin;
 			try {
 				bin = new BufferedInputStream(connection.getInputStream());
 			} catch (Exception e) {
-				Log.e("Error","Failed at BufferedInputStream");
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			//Log.e("Error", String.valueOf(bin));
