@@ -52,19 +52,12 @@ public class JSONManagement
 	}
 	
 	//NOTE - this is NOT working. I need to debug the Cloudant API to find out where I've screwed up, but am unlikely to finish prior to EOD Thursday.
-	//I've commented much of it out for now so I can at least demonstrate posting this data to an appended JSON Object within the application.
 	public static void addObjectToLiveArray(JSONObject toadd)
 	{
 		try {
 			JSONObject master = new JSONObject(MainActivity.getResultText());
+			String id = master.getString("_id");
 			master.getJSONObject("stats").getJSONArray("Games").put(toadd);
-			MainActivity.setResultText(master.toString());
-			CreateDisplay statDisplay = new CreateDisplay(MainActivity.getCurrentContext());
-			MainActivity.updateView(statDisplay);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-			/*String id = master.getString("_id");
 			String urlParameters = master.toString();
 			String request = "http://scottcaruso.cloudant.com/softballstats/"+id;
 			URL url;
@@ -117,7 +110,7 @@ public class JSONManagement
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 	}
 
 	

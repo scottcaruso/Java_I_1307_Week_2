@@ -220,11 +220,8 @@ public class MainActivity extends Activity {
 				
 				@Override
 				public void onClick(View v) {
-					int Month = calendar.getMonth();
-					int Day = calendar.getDayOfMonth();
-					int Year = calendar.getYear();
-					String date = String.valueOf(Month) + "/" + String.valueOf(Day) + "/" + String.valueOf(Year);
-					JSONObject newGame = JSONManagement.createJSONObject(date, teamEntry.getText().toString(), atBatsSpinner.getSelectedItem().toString(), hitsSpinner.getSelectedItem().toString(), doublesSpinner.getSelectedItem().toString(), triplesSpinner.getSelectedItem().toString(), homerunsSpinner.getSelectedItem().toString(), rbiSpinner.getSelectedItem().toString());
+					String date = calendar.getText().toString();
+					JSONObject newGame = JSONManagement.createJSONObject(calendar.val , teamEntry.toString(), atBatsSpinner.toString(), hitsSpinner.toString(), doublesSpinner.toString(), triplesSpinner.toString(), homerunsSpinner.toString(), rbiSpinner.toString());
 					JSONManagement.addObjectToLiveArray(newGame);
 				}
 			});

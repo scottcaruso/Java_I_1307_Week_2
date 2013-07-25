@@ -58,9 +58,6 @@ public class JSONManagement
 		try {
 			JSONObject master = new JSONObject(MainActivity.getResultText());
 			master.getJSONObject("stats").getJSONArray("Games").put(toadd);
-			MainActivity.setResultText(master.toString());
-			CreateDisplay statDisplay = new CreateDisplay(MainActivity.getCurrentContext());
-			MainActivity.updateView(statDisplay);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

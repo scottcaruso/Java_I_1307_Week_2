@@ -35,7 +35,7 @@ public class JSONManagement
 	{
 		JSONObject newGame = new JSONObject();
 		try {
-			newGame.put("Date", date);
+			newGame.put("Date", date.toString());
 			newGame.put("Opponent Name",opponent);
 			newGame.put("AB",atbats);
 			newGame.put("H",hits);
