@@ -112,9 +112,9 @@ public class RetrieveData {
 					String nameString = rows.getJSONObject(x).getJSONObject("doc").getString("username");
 					if (nameString.compareTo(MainActivity.getTextThatWasEntered()) == 0)
 					{
-						MainActivity.setResultText(thisJson);
 						CreateDisplay statDisplay = new CreateDisplay(MainActivity.getCurrentContext());
 						MainActivity.updateView(statDisplay);
+						MainActivity.setResultText(thisJson);
 						break;
 					}
 					if (x == numberOfItems-1)

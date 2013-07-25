@@ -39,7 +39,7 @@ public class CreateDisplay extends GridLayout {
 		super(thisContext);
 		String thisPersonsData = MainActivity.getResultText();
 		JSONArray listOfGames = JSONManagement.getListOfGames(thisPersonsData);
-		int numberOfGames = listOfGames.length()+1;
+		int numberOfGames = listOfGames.length();
 		
 		context = thisContext;
 		this.setColumnCount(numberOfGames);
@@ -89,7 +89,7 @@ public class CreateDisplay extends GridLayout {
 		for (int x = 0; x < numberOfGames; x++)
 		{
 			try {
-				TextView thisTextView = new TextView(context);
+				TextView thisTextView = new TextView(context)
 				String thisOpponent = listOfGames.getJSONObject(x).getString("Opponent Name");
 				thisTextView.setText(thisOpponent);
 				this.addView(thisTextView);
@@ -102,10 +102,9 @@ public class CreateDisplay extends GridLayout {
 		for (int x = 0; x < numberOfGames; x++)
 		{
 			try {
-				TextView thisTextView = new TextView(context);
 				String thisABs = listOfGames.getJSONObject(x).getString("AB");
-				thisTextView.setText(thisABs);
-				this.addView(thisTextView);
+				atbats.setText(thisABs);
+				this.addView(atbats);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -115,10 +114,9 @@ public class CreateDisplay extends GridLayout {
 		for (int x = 0; x < numberOfGames; x++)
 		{
 			try {
-				TextView thisTextView = new TextView(context);
 				String thisHits = listOfGames.getJSONObject(x).getString("H");
-				thisTextView.setText(thisHits);
-				this.addView(thisTextView);
+				hits.setText(thisHits);
+				this.addView(hits);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -128,10 +126,9 @@ public class CreateDisplay extends GridLayout {
 		for (int x = 0; x < numberOfGames; x++)
 		{
 			try {
-				TextView thisTextView = new TextView(context);
 				String thisDoubles = listOfGames.getJSONObject(x).getString("2B");
-				thisTextView.setText(thisDoubles);
-				this.addView(thisTextView);
+				doubles.setText(thisDoubles);
+				this.addView(doubles);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -141,10 +138,9 @@ public class CreateDisplay extends GridLayout {
 		for (int x = 0; x < numberOfGames; x++)
 		{
 			try {
-				TextView thisTextView = new TextView(context);
 				String thisTriples = listOfGames.getJSONObject(x).getString("3B");
-				thisTextView.setText(thisTriples);
-				this.addView(thisTextView);
+				triples.setText(thisTriples);
+				this.addView(triples);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -154,10 +150,9 @@ public class CreateDisplay extends GridLayout {
 		for (int x = 0; x < numberOfGames; x++)
 		{
 			try {
-				TextView thisTextView = new TextView(context);
 				String thisHomeruns = listOfGames.getJSONObject(x).getString("HR");
-				thisTextView.setText(thisHomeruns);
-				this.addView(thisTextView);
+				homeruns.setText(thisHomeruns);
+				this.addView(homeruns);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -167,10 +162,9 @@ public class CreateDisplay extends GridLayout {
 		for (int x = 0; x < numberOfGames; x++)
 		{
 			try {
-				TextView thisTextView = new TextView(context);
 				String thisRBI = listOfGames.getJSONObject(x).getString("RBI");
-				thisTextView.setText(thisRBI);
-				this.addView(thisTextView);
+				rbi.setText(thisRBI);
+				this.addView(rbi);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}

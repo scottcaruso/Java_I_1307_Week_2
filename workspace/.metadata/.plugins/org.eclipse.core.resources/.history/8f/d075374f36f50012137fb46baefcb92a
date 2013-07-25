@@ -39,7 +39,7 @@ public class CreateDisplay extends GridLayout {
 		super(thisContext);
 		String thisPersonsData = MainActivity.getResultText();
 		JSONArray listOfGames = JSONManagement.getListOfGames(thisPersonsData);
-		int numberOfGames = listOfGames.length()+1;
+		int numberOfGames = listOfGames.length();
 		
 		context = thisContext;
 		this.setColumnCount(numberOfGames);
