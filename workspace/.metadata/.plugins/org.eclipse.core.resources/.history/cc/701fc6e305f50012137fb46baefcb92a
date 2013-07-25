@@ -1,0 +1,43 @@
+package com.scottcaruso.userinterface;
+
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+public class TableDisplay {
+	
+	public void createTable()
+	{
+		context = MainActivity.getCurrentContext();
+		
+		TableLayout newLayout = new TableLayout(MainActivity.getCurrentContext());
+		TableRow newRow = new TableRow(MainActivity.getCurrentContext());
+		newRow.addView
+		
+		TextView dateLabel = new TextView(context);
+		dateLabel.setText("Date");
+		date = new TextView(context);
+		TextView opponentLabel = new TextView(context);
+		opponentLabel.setText("Opponent");
+		opponent = new TextView(context);
+		TextView atbatLabel = new TextView(context);
+		atbatLabel.setText("AB");
+		atbats = new TextView(context);
+		TextView hitsLabel = new TextView(context);
+		hitsLabel.setText("H");
+		hits = new TextView(context);
+		TextView doublesLabel = new TextView(context);
+		doublesLabel.setText("2B");
+		doubles = new TextView(context);
+		TextView triplesLabel = new TextView(context);
+		triplesLabel.setText("3B");
+		triples = new TextView(context);
+		TextView homerunsLabel = new TextView(context);
+		homerunsLabel.setText("HR");
+		homeruns = new TextView(context);
+		TextView rbiLabel = new TextView(context);
+		rbiLabel.setText("RBI");
+		rbi = new TextView(context);
+	}
+
+}

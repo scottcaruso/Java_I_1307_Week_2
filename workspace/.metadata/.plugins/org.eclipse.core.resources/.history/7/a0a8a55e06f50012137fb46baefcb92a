@@ -1,0 +1,66 @@
+package com.scottcaruso.userinterface;
+
+import android.content.Context;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+public class TableDisplay {
+	
+		Context context;
+		TextView date;
+		TextView opponent;
+		TextView atbats;
+		TextView hits;
+		TextView doubles;
+		TextView triples;
+		TextView homeruns;
+		TextView rbi;
+	
+	public static TableLayout createTable()
+	{
+		context = MainActivity.getCurrentContext();
+		
+		TableLayout newLayout = new TableLayout(context);
+		TableRow newRow = new TableRow(context);
+		
+		TextView dateLabel = new TextView(context);
+		dateLabel.setText("Date");
+		date = new TextView(context);
+		TextView opponentLabel = new TextView(context);
+		opponentLabel.setText("Opponent");
+		opponent = new TextView(context);
+		TextView atbatLabel = new TextView(context);
+		atbatLabel.setText("AB");
+		atbats = new TextView(context);
+		TextView hitsLabel = new TextView(context);
+		hitsLabel.setText("H");
+		hits = new TextView(context);
+		TextView doublesLabel = new TextView(context);
+		doublesLabel.setText("2B");
+		doubles = new TextView(context);
+		TextView triplesLabel = new TextView(context);
+		triplesLabel.setText("3B");
+		triples = new TextView(context);
+		TextView homerunsLabel = new TextView(context);
+		homerunsLabel.setText("HR");
+		homeruns = new TextView(context);
+		TextView rbiLabel = new TextView(context);
+		rbiLabel.setText("RBI");
+		rbi = new TextView(context);
+		
+		newRow.addView(dateLabel);
+		newRow.addView(opponentLabel);
+		newRow.addView(atbatLabel);
+		newRow.addView(hitsLabel);
+		newRow.addView(doublesLabel);
+		newRow.addView(triplesLabel);
+		newRow.addView(homerunsLabel);
+		newRow.addView(rbiLabel);
+		
+		newLayout.addView(newRow);
+		
+		return newLayout;
+	}
+
+}

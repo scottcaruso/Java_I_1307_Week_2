@@ -1,0 +1,9 @@
+package com.scottcaruso.userinterface;
+
+import android.widget.TableLayout;
+
+public class TableDisplay {
+	
+	TableLayout newLayout = new TableLayout(MainActivity.getCurrentContext());
+
+}

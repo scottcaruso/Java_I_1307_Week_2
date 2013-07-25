@@ -226,6 +226,13 @@ public class MainActivity extends Activity {
 		mainLayout.addView(newLayout);
 	}
 	
+	public static void updateView(CreateDisplay newDisplay)
+	{
+		mainLayout.removeAllViews();
+		mainLayout.addView(newDisplay);
+		mainLayout.setOrientation(LinearLayout.VERTICAL);
+	}
+	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

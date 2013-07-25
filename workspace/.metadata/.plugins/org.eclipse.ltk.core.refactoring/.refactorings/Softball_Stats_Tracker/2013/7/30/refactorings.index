@@ -1,3 +1,4 @@
 1374635908183	Rename local variable 'conn'
 1374636230790	Rename type 'RetrieveDataFromCloudant'
 1374717122259	Encapsulate field 'responseFromURL'
+1374742143101	Delete element

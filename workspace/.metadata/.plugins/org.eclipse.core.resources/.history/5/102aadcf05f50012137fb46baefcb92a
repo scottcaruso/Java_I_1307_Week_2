@@ -1,0 +1,13 @@
+package com.scottcaruso.userinterface;
+
+import android.widget.TableLayout;
+import android.widget.TableRow;
+
+public class TableDisplay {
+	
+	public void createTable()
+	{
+		TableLayout newLayout = new TableLayout(MainActivity.getCurrentContext());
+		TableRow newRow = new TableRow(MainActivity.getCurrentContext());	}
+
+}
