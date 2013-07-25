@@ -84,11 +84,8 @@ public class MainActivity extends Activity {
 			}
 		});
         
-        TextView help = UIElementCreator.createTextEntryField(this, "For testing purposes, please use the account name 'testuser'. Functionality has not been added to support creating new accounts.")
-;
         mainLayout.addView(userName);
         mainLayout.addView(searchForUserName);
-        mainLayout.addView(help);
         
         
         /*spinners = new ArrayList<Spinner>();

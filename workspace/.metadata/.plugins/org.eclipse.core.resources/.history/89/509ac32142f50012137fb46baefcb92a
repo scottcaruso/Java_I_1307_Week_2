@@ -51,7 +51,6 @@ public class JSONManagement
 		}
 	}
 	
-	//NOTE - this is NOT working. I need to debug the Cloudant API to find out where I've screwed up, but am unlikely to finish prior to EOD Thursday.
 	public static void addObjectToLiveArray(JSONObject toadd)
 	{
 		try {

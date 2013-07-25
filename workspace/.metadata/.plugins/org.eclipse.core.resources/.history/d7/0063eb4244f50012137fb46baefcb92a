@@ -34,7 +34,6 @@ import android.widget.ScrollView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -70,25 +69,14 @@ public class MainActivity extends Activity {
 			public void onClick(View v) 
 			{
 				//JSON method to verify if this element exists or not
-				boolean connection = Connection_Verification.areWeConnected(MainActivity.this);
-				if (connection)
-				{
-					textThatWasEntered = userName.getText().toString();
-					setCurrentContext(MainActivity.this);
-					RetrieveData.retrieveCloudantData("http://scottcaruso.cloudant.com/softballstats/_all_docs?include_docs=true");
-				} else
-				{
-					Toast toast = Toast.makeText(MainActivity.this, "No Internet Connection!", Toast.LENGTH_SHORT);
-					toast.show();
-				}
+				textThatWasEntered = userName.getText().toString();
+				setCurrentContext(MainActivity.this);
+				RetrieveData.retrieveCloudantData("http://scottcaruso.cloudant.com/softballstats/_all_docs?include_docs=true");
 			}
 		});
         
-        TextView help = UIElementCreator.createTextEntryField(this, "For testing purposes, please use the account name 'testuser'. Functionality has not been added to support creating new accounts.")
-;
         mainLayout.addView(userName);
         mainLayout.addView(searchForUserName);
-        mainLayout.addView(help);
         
         
         /*spinners = new ArrayList<Spinner>();
