@@ -324,7 +324,7 @@ public class MainActivity extends Activity {
 				@Override
 				public void onClick(View v) {
 					JSONObject newGame = JSONManagement.createJSONObject(calendar.toString(), teamEntry.toString(), atBatsSpinner.toString(), hitsSpinner.toString(), doublesSpinner.toString(), triplesSpinner.toString(), homerunsSpinner.toString(), rbiSpinner.toString());
-					JSONManagement.addObjectToLiveArray(newGame);
+					Log.i("Data:",newGame.toString();)
 				}
 			});
 			

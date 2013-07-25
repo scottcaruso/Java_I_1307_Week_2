@@ -4,11 +4,7 @@
  */
 package com.scottcaruso.utilities;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 import org.json.JSONArray;
@@ -57,54 +53,23 @@ public class JSONManagement
 			JSONObject master = new JSONObject(MainActivity.getResultText());
 			String id = master.getString("_id");
 			master.getJSONObject("stats").getJSONArray("Games").put(toadd);
-			String urlParameters = master.toString();
-			String request = "http://scottcaruso.cloudant.com/softballstats/"+id;
-			URL url;
-			try {
-				url = new URL(request);
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				url = null;
-			} 
-			HttpURLConnection connection;
-			try {
-				connection = (HttpURLConnection) url.openConnection();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				connection = null;
-			}           
+			String urlParameters = "/db/" + id;
+			String request = "http://scottcaruso.cloudant.com/softballstats/";
+			URL url = new URL(request); 
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();           
 			connection.setDoOutput(true);
 			connection.setDoInput(true);
 			connection.setInstanceFollowRedirects(false); 
-			try {
-				connection.setRequestMethod("PUT");
-			} catch (ProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-			connection.setRequestProperty("Content-Type", "application/json"); 
+			connection.setRequestMethod("PUT"); 
+			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); 
 			connection.setRequestProperty("charset", "utf-8");
 			connection.setRequestProperty("Content-Length", "" + Integer.toString(urlParameters.getBytes().length));
 			connection.setUseCaches (false);
 
-			DataOutputStream stream;
-			try {
-				stream = new DataOutputStream(connection.getOutputStream ());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				stream = null;
-			}
-			try {
-				stream.writeBytes(urlParameters);
-				stream.flush();
-				stream.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			DataOutputStream wr = new DataOutputStream(connection.getOutputStream ());
+			wr.writeBytes(urlParameters);
+			wr.flush();
+			wr.close();
 			connection.disconnect();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

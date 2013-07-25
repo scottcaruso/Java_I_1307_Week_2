@@ -58,7 +58,7 @@ public class JSONManagement
 			String id = master.getString("_id");
 			master.getJSONObject("stats").getJSONArray("Games").put(toadd);
 			String urlParameters = master.toString();
-			String request = "http://scottcaruso.cloudant.com/softballstats/"+id;
+			String request = "http://scottcaruso:navybean@scottcaruso.cloudant.com/softballstats/"+id;
 			URL url;
 			try {
 				url = new URL(request);

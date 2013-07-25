@@ -246,45 +246,45 @@ public class MainActivity extends Activity {
         String[] genericStringArray = res.getStringArray(R.array.numericalvalues);
         
         //Create Date Picker
-        final DatePicker calendar = UIElementCreator.createDatePicker(context);
+        DatePicker calendar = UIElementCreator.createDatePicker(context);
         TextView calendarLabel = UIElementCreator.createLabel(context, "Date of Game");
         
         //Create Edit Team Field
-        final EditText teamEntry = UIElementCreator.createTextEntryField(context, "Enter Opponent Name");
+        EditText teamEntry = UIElementCreator.createTextEntryField(context, "Enter Opponent Name");
         TextView entryLabel = UIElementCreator.createLabel(context, "Opposing Team's Name");
         
         //Create At Bats and add them to the appropriate array
-        final Spinner atBatsSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        Spinner atBatsSpinner = UIElementCreator.createSpinner(context, genericStringArray);
         TextView atBatsLabel = UIElementCreator.createLabel(context, "At Bats");
         spinners.add(atBatsSpinner);
         labels.add(atBatsLabel);
         
         //Create Hits and add them to the appropriate array
-        final Spinner hitsSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        Spinner hitsSpinner = UIElementCreator.createSpinner(context, genericStringArray);
         TextView hitsLabel = UIElementCreator.createLabel(context, "Hits");
         spinners.add(hitsSpinner);
         labels.add(hitsLabel);
         
         //Create Doubles and add them to the appropriate array
-        final Spinner doublesSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        Spinner doublesSpinner = UIElementCreator.createSpinner(context, genericStringArray);
         TextView doublesLabel = UIElementCreator.createLabel(context, "Doubles");
         spinners.add(doublesSpinner);
         labels.add(doublesLabel);
         
         //Create Triples and add them to the appropriate array
-        final Spinner triplesSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        Spinner triplesSpinner = UIElementCreator.createSpinner(context, genericStringArray);
         TextView triplesLabel = UIElementCreator.createLabel(context, "Triples");
         spinners.add(triplesSpinner);
         labels.add(triplesLabel);
         
         //Create Home Runs and add them to the appropriate array
-        final Spinner homerunsSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        Spinner homerunsSpinner = UIElementCreator.createSpinner(context, genericStringArray);
         TextView homerunsLabel = UIElementCreator.createLabel(context, "Home Runs");
         spinners.add(homerunsSpinner);
         labels.add(homerunsLabel);
         
         //Create RBIs and add them to the appropriate array
-        final Spinner rbiSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        Spinner rbiSpinner = UIElementCreator.createSpinner(context, genericStringArray);
         TextView rbiLabel = UIElementCreator.createLabel(context, "RBIs");
         spinners.add(rbiSpinner);
         labels.add(rbiLabel);
@@ -318,16 +318,6 @@ public class MainActivity extends Activity {
 			}
 			Button addStats = UIElementCreator.createButton(getCurrentContext(), "Add Game", 1);
 			Button returnToView = UIElementCreator.createButton(getCurrentContext(), "Back", 2);
-			
-			addStats.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					JSONObject newGame = JSONManagement.createJSONObject(calendar.toString(), teamEntry.toString(), atBatsSpinner.toString(), hitsSpinner.toString(), doublesSpinner.toString(), triplesSpinner.toString(), homerunsSpinner.toString(), rbiSpinner.toString());
-					JSONManagement.addObjectToLiveArray(newGame);
-				}
-			});
-			
 			mainLayout.addView(rowOne);
 			mainLayout.addView(rowTwo);
 			mainLayout.addView(addStats);
