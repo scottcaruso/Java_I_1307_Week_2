@@ -6,6 +6,7 @@ package com.scottcaruso.userinterface;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.scottcaruso.java_i_1307_week_2.R;
@@ -35,6 +36,7 @@ public class MainActivity extends Activity {
 	ArrayList<Spinner> spinners;
 	ArrayList<TextView> labels;
 	TextView statView;
+	String responseFromURL;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,68 @@ public class MainActivity extends Activity {
         final LinearLayout mainLayout = new LinearLayout(this);
         mainLayout.setOrientation(LinearLayout.VERTICAL);
         
-        spinners = new ArrayList<Spinner>();
+        //Start out with a simple entry field - Username
+        final EditText userName = UIElementCreator.createTextEntryField(this, "Enter User Name");
+        final Button searchForUserName = UIElementCreator.createButton(this, "Search for User Name", 1);
+        searchForUserName.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				//JSON method to verify if this element exists or not
+				String whatFieldSays = userName.getText().toString();
+				boolean exists = true; //RetrieveData.doesThisUserExist(whatFieldSays);
+				if (exists)
+				{
+					responseFromURL = RetrieveData.retrieveCloudantData("http://scottcaruso:navybean@scottcaruso.cloudant.com/softballstats/6408c75b31783f5000e49b402838d5e5");
+					Log.i("Data:","URL Repsonse: "+responseFromURL);
+					JSONObject newObject = JSONManagement.getJSONFromDataSource(responseFromURL);
+					/*try {
+						String idString = newObject.getString("_id");
+						Log.i("Data:",idString);
+					} catch (JSONException e) {
+						Log.i("Data:","idString didn't work.");
+						e.printStackTrace();
+					}*/
+				} else
+				{
+					//Present user with the option to create or search again
+					mainLayout.removeView(userName);
+					mainLayout.removeView(searchForUserName);
+					final TextView userDoesntExist = UIElementCreator.createLabel(MainActivity.this, "User "+whatFieldSays+" could not be found. Would you like to create a new entry or search again?");
+					final Button createNewUser = UIElementCreator.createButton(MainActivity.this, "Create New", 1);
+					final Button searchAgain = UIElementCreator.createButton(MainActivity.this, "Search Again", 2);
+					mainLayout.addView(userDoesntExist);
+					mainLayout.addView(createNewUser);
+					mainLayout.addView(searchAgain);
+					createNewUser.setOnClickListener(new View.OnClickListener() {
+						
+						@Override
+						public void onClick(View v) 
+						{
+							//Enter createNewUser flow		
+						}
+					});
+					searchAgain.setOnClickListener(new View.OnClickListener() {
+						
+						@Override
+						public void onClick(View v) 
+						{
+							mainLayout.removeView(userDoesntExist);
+							mainLayout.removeView(createNewUser);
+							mainLayout.removeView(searchAgain);
+							mainLayout.addView(userName);
+					        mainLayout.addView(searchForUserName);
+						}
+					});
+				}
+			}
+		});
+        
+        
+        mainLayout.addView(userName);
+        mainLayout.addView(searchForUserName);
+        
+        
+        /*spinners = new ArrayList<Spinner>();
         labels = new ArrayList<TextView>();
         String[] genericStringArray = res.getStringArray(R.array.numericalvalues);
         
@@ -162,8 +225,8 @@ public class MainActivity extends Activity {
         //Log.i("State",responseString);
        
         RetrieveData rd = new RetrieveData();
-        rd.retrieveCloudantData("http://scottcaruso:navybean@scottcaruso.cloudant.com/softballstats/_all_docs");
-        
+        rd.retrieveCloudantData("http://scottcaruso:navybean@scottcaruso.cloudant.com/softballstats/6408c75b31783f5000e49b402838d5e5");
+        */
         
         //Add the layout to the scroll view and show it
         scroll.addView(mainLayout);

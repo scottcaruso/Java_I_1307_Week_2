@@ -101,9 +101,15 @@ public class JSONManagement
 		return thisObject;
 	}
 	
-	//Get the JSON data form the Cloudant service - not used in project yet
-	public static JSONObject getJSONFromDataSource()
+	//Get the JSON data from the Cloudant service - not used in project yet
+	public static JSONObject getJSONFromDataSource(String input)
 	{
-		return null;
+		try {
+			JSONObject newJSON = new JSONObject(input);
+			return newJSON;
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

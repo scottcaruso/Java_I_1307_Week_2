@@ -2,31 +2,43 @@ package com.scottcaruso.utilities;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+
+import com.scottcaruso.userinterface.MainActivity;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 public class RetrieveData {
 	
-	public void retrieveCloudantData(String urlString)
+	static String response = "";
+	
+	public static boolean doesThisUserExist(String textEntry)
+	{
+		//This function will be used to determine if the user exists in the Cloudant database
+		return false;
+	}
+	
+	public static String retrieveCloudantData(String urlString)
 	{
 		URL dataURL;
-		try {
+		try 
+		{
 			dataURL = new URL(urlString);
 			CloudantRequest cloudReq = new CloudantRequest();
 			cloudReq.execute(dataURL);
-		} catch (MalformedURLException e) {
+			return response;	
+		} 
+		catch (MalformedURLException e) {
 			e.printStackTrace();
 		}	
+		return response;
 	}
 	
 	public static String getResponse(URL url)
 	{
-		String response = "";
 
 		try 
 		{
@@ -39,7 +51,6 @@ public class RetrieveData {
 				Log.e("Error","Failed at BufferedInputStream");
 				e.printStackTrace();
 			}
-			//Log.e("Error", String.valueOf(bin));
 			
 			byte[] contentBytes = new byte[1024];
 			int bytesRead = 0;
@@ -51,7 +62,6 @@ public class RetrieveData {
 				responseBuffer.append(response);
 			}
 			
-			Log.i("Data:",responseBuffer.toString());
 			return responseBuffer.toString();
 		
 		} catch (IOException e) {
@@ -62,7 +72,7 @@ public class RetrieveData {
 		return response;
 	}
 	
-	private class CloudantRequest extends AsyncTask<URL, Void, String>
+	private static class CloudantRequest extends AsyncTask<URL, Void, String>
 	{
 		@Override
 		protected String doInBackground(URL... urls)
