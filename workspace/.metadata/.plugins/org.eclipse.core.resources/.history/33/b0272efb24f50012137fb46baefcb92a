@@ -4,12 +4,10 @@
  */
 package com.scottcaruso.userinterface;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.scottcaruso.statcalculation.Averages;
-import com.scottcaruso.utilities.JSONManagement;
 
 import android.content.Context;
 import android.util.Log;
@@ -34,12 +32,10 @@ public class CreateDisplay extends GridLayout {
 	Context context;
 	
 	
-	public CreateDisplay(Context thisContext)
+	public CreateDisplay(Context thisContext, int numberOfGames)
 	{
 		super(thisContext);
 		String thisPersonsData = MainActivity.getResultText();
-		JSONArray listOfGames = JSONManagement.getListOfGames(thisPersonsData);
-		int numberOfGames = listOfGames.length();
 		
 		context = thisContext;
 		this.setColumnCount(numberOfGames);

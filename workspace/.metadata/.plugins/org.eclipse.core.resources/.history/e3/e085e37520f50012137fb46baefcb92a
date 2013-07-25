@@ -345,11 +345,6 @@ public class MainActivity extends Activity {
 		responseFromURL = text;
 	}
 	
-	public static String getResultText() 
-	{
-		return responseFromURL;
-	}
-	
 	public static void setExists (Boolean bool)
 	{
 		exists = bool;

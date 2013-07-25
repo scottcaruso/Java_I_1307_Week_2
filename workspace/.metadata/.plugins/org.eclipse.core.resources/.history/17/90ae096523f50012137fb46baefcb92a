@@ -113,14 +113,20 @@ public class JSONManagement
 	//Parse data for the stat display
 	public static JSONArray getListOfGames(String jsonString)
 	{
-		try {
+		try 
+		{
 			JSONObject thisObject = new JSONObject (jsonString);
-			JSONObject stats = thisObject.getJSONObject("stats");
-			JSONArray games = stats.getJSONArray("Games");
-			return games;
-		} catch (JSONException e) {
-			e.printStackTrace();
-			return null;
-		}
+			JSONArray rows = thisObject.getJSONArray("rows");
+			JSONArray gamesArray = new JSONArray();
+			int numberOfItems = rows.length();
+			for (int x = 0; x < numberOfItems; x++)
+			{
+				JSONObject doc = rows.getJSONObject(x).getJSONObject("doc");
+				JSONObject stats = doc.getJSONObject("stats");
+				JSONArray games = stats.getJSONArray("Games");
+				
+
+					createNewUser.setOnClickListener(new View.OnClickListener() {
 	}
+
 }

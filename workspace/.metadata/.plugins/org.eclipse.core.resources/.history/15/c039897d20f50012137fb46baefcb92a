@@ -347,7 +347,7 @@ public class MainActivity extends Activity {
 	
 	public static String getResultText() 
 	{
-		return responseFromURL;
+		responseFromURL = text;
 	}
 	
 	public static void setExists (Boolean bool)

@@ -108,13 +108,12 @@ public class RetrieveData {
 				int numberOfItems = rows.length();
 				for (int x = 0; x < numberOfItems; x++)
 				{
-					String thisJson = rows.getJSONObject(x).getString("doc");
+					String jsonObject = row.sgetJSONObject(x).getString("doc");
 					String nameString = rows.getJSONObject(x).getJSONObject("doc").getString("username");
 					if (nameString.compareTo(MainActivity.getTextThatWasEntered()) == 0)
 					{
-						CreateDisplay statDisplay = new CreateDisplay(MainActivity.getCurrentContext());
+						CreateDisplay statDisplay = new CreateDisplay(MainActivity.getCurrentContext(), 2);
 						MainActivity.updateView(statDisplay);
-						MainActivity.setResultText(thisJson);
 						break;
 					}
 					if (x == numberOfItems-1)

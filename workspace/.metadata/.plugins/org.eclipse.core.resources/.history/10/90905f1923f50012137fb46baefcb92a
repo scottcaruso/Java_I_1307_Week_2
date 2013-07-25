@@ -111,16 +111,35 @@ public class JSONManagement
 	}
 	
 	//Parse data for the stat display
-	public static JSONArray getListOfGames(String jsonString)
+	public static JSONObject getListOfGames(String jsonString)
 	{
-		try {
+		try 
+		{
 			JSONObject thisObject = new JSONObject (jsonString);
-			JSONObject stats = thisObject.getJSONObject("stats");
-			JSONArray games = stats.getJSONArray("Games");
-			return games;
-		} catch (JSONException e) {
-			e.printStackTrace();
-			return null;
-		}
+			JSONArray rows = thisObject.getJSONArray("rows");
+			JSONArray gamesArray = new JSONArray();
+			int numberOfItems = rows.length();
+			for (int x = 0; x < numberOfItems; x++)
+			{
+				JSONArray listOfGames = rows.getJSONObject(x).getJSONObject("doc").getString("stats").getJSONArray("games");
+				if (nameString.compareTo(MainActivity.getTextThatWasEntered()) == 0)
+				{
+					CreateDisplay statDisplay = new CreateDisplay(MainActivity.getCurrentContext(), 2);
+					MainActivity.updateView(statDisplay);
+					break;
+				}
+				if (x == numberOfItems-1)
+				{
+					Context currentContext = MainActivity.getCurrentContext();
+					final LinearLayout mainLayout = new LinearLayout(MainActivity.getCurrentContext());
+					mainLayout.removeAllViews();
+					final TextView userDoesntExist = UIElementCreator.createLabel(currentContext, "User "+MainActivity.getTextThatWasEntered()+" could not be found. Would you like to create a new entry or search again?");
+					final Button createNewUser = UIElementCreator.createButton(currentContext, "Create New", 1);
+					final Button searchAgain = UIElementCreator.createButton(currentContext, "Search Again", 2);
+					mainLayout.addView(userDoesntExist);
+					mainLayout.addView(createNewUser);
+					mainLayout.addView(searchAgain);
+					createNewUser.setOnClickListener(new View.OnClickListener() {
 	}
+
 }

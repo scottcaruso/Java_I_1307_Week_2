@@ -112,7 +112,7 @@ public class RetrieveData {
 					String nameString = rows.getJSONObject(x).getJSONObject("doc").getString("username");
 					if (nameString.compareTo(MainActivity.getTextThatWasEntered()) == 0)
 					{
-						CreateDisplay statDisplay = new CreateDisplay(MainActivity.getCurrentContext());
+						CreateDisplay statDisplay = new CreateDisplay(MainActivity.getCurrentContext(), 2);
 						MainActivity.updateView(statDisplay);
 						MainActivity.setResultText(thisJson);
 						break;

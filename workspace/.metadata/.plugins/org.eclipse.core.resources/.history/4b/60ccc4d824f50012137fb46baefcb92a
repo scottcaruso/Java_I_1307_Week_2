@@ -119,8 +119,9 @@ public class JSONManagement
 			JSONArray games = stats.getJSONArray("Games");
 			return games;
 		} catch (JSONException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
 		}
-	}
+		}
+
 }
