@@ -37,8 +37,8 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-	ArrayList<Spinner> spinners;
-	ArrayList<TextView> labels;
+	static ArrayList<Spinner> spinners;
+	static ArrayList<TextView> labels;
 	TextView statView;
 	private static String responseFromURL = "";
 	private static String textThatWasEntered = "";
@@ -53,13 +53,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-    	Resources res = getResources();
-        
     	//Create a scrollview to hold the main view, and make it the appropriate size.
-        final ScrollView scroll = new ScrollView(this);
-        scroll.setBackgroundColor(res.getColor(android.R.color.transparent));
         mainLayoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-        scroll.setLayoutParams(mainLayoutParams);
         
         mainLayout = new LinearLayout(this);
         mainLayout.setOrientation(LinearLayout.VERTICAL);
@@ -199,8 +194,7 @@ public class MainActivity extends Activity {
         */
         
         //Add the layout to the scroll view and show it
-        scroll.addView(mainLayout);
-        setContentView(scroll);
+        setContentView(mainLayout);
         
     }
 
@@ -230,7 +224,108 @@ public class MainActivity extends Activity {
 	{
 		mainLayout.removeAllViews();
 		mainLayout.addView(newDisplay);
+		final Button addNewGame = UIElementCreator.createButton(getCurrentContext(), "Add New Game", 1);
+		mainLayout.addView(addNewGame);
 		mainLayout.setOrientation(LinearLayout.VERTICAL);
+		addNewGame.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				addGameScreen(getCurrentContext());
+			}
+		});
+	}
+	
+	public static void addGameScreen(Context context)
+	{
+		mainLayout.removeAllViews();
+    	Resources res = context.getResources();
+		
+    	spinners = new ArrayList<Spinner>();
+        labels = new ArrayList<TextView>();
+        String[] genericStringArray = res.getStringArray(R.array.numericalvalues);
+        
+        //Create Date Picker
+        DatePicker calendar = UIElementCreator.createDatePicker(context);
+        TextView calendarLabel = UIElementCreator.createLabel(context, "Date of Game");
+        
+        //Create Edit Team Field
+        EditText teamEntry = UIElementCreator.createTextEntryField(context, "Enter Opponent Name");
+        TextView entryLabel = UIElementCreator.createLabel(context, "Opposing Team's Name");
+        
+        //Create At Bats and add them to the appropriate array
+        Spinner atBatsSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        TextView atBatsLabel = UIElementCreator.createLabel(context, "At Bats");
+        spinners.add(atBatsSpinner);
+        labels.add(atBatsLabel);
+        
+        //Create Hits and add them to the appropriate array
+        Spinner hitsSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        TextView hitsLabel = UIElementCreator.createLabel(context, "Hits");
+        spinners.add(hitsSpinner);
+        labels.add(hitsLabel);
+        
+        //Create Doubles and add them to the appropriate array
+        Spinner doublesSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        TextView doublesLabel = UIElementCreator.createLabel(context, "Doubles");
+        spinners.add(doublesSpinner);
+        labels.add(doublesLabel);
+        
+        //Create Triples and add them to the appropriate array
+        Spinner triplesSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        TextView triplesLabel = UIElementCreator.createLabel(context, "Triples");
+        spinners.add(triplesSpinner);
+        labels.add(triplesLabel);
+        
+        //Create Home Runs and add them to the appropriate array
+        Spinner homerunsSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        TextView homerunsLabel = UIElementCreator.createLabel(context, "Home Runs");
+        spinners.add(homerunsSpinner);
+        labels.add(homerunsLabel);
+        
+        //Create RBIs and add them to the appropriate array
+        Spinner rbiSpinner = UIElementCreator.createSpinner(context, genericStringArray);
+        TextView rbiLabel = UIElementCreator.createLabel(context, "RBIs");
+        spinners.add(rbiSpinner);
+        labels.add(rbiLabel);
+        
+        //Add the views that don't exist within arrays
+        mainLayout.addView(calendarLabel);
+        mainLayout.addView(calendar);
+        mainLayout.addView(entryLabel);
+        mainLayout.addView(teamEntry);
+        
+        LinearLayout rowOne = new LinearLayout(context);
+        LinearLayout rowTwo = new LinearLayout(context);
+        LayoutParams statParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        rowOne.setLayoutParams(statParams);
+        rowTwo.setLayoutParams(statParams);
+        
+        //Loop through arrays and create spinner elements for Main Menu
+        try {
+			if (spinners.size() == labels.size())
+			{
+			    for (int x = 1; x <= spinners.size()-3; x++)
+			    {
+			    	rowOne.addView(labels.get(x-1));
+			    	rowOne.addView(spinners.get(x-1));
+			    }
+			    for (int x = spinners.size()-2; x <= spinners.size(); x++)
+			    {
+			    	rowTwo.addView(labels.get(x-1));
+			    	rowTwo.addView(spinners.get(x-1));
+			    }
+			}
+			Button addStats = UIElementCreator.createButton(getCurrentContext(), "Add Game", 1);
+			Button returnToView = UIElementCreator.createButton(getCurrentContext(), "Back", 2);
+			mainLayout.addView(rowOne);
+			mainLayout.addView(rowTwo);
+			mainLayout.addView(addStats);
+			mainLayout.addView(returnToView);
+
+		} catch (IndexOutOfBoundsException e) {
+			Log.d("Crash:","Index Out Of Bounds Error");
+		}
 	}
 	
 	@Override

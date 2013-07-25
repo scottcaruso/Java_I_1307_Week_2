@@ -111,7 +111,6 @@ public class RetrieveData {
 					String nameString = rows.getJSONObject(x).getJSONObject("doc").getString("username");
 					if (nameString.compareTo(MainActivity.getTextThatWasEntered()) == 0)
 					{
-						Log.i("Data:","Match found!");
 						CreateDisplay statDisplay = new CreateDisplay(MainActivity.getCurrentContext(), 2);
 						MainActivity.updateView(statDisplay);
 						break;

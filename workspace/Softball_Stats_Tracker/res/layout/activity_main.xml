@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
       	 />
     
-<GridView
+<GridLayout
         android:id="@+id/lookbook_gridview"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -33,6 +33,6 @@
         android:cacheColorHint="#000"
         android:descendantFocusability="afterDescendants"
         android:layout_alignParentTop="true" >
-    </GridView> 
+    </GridLayout> 
 
 </RelativeLayout>
