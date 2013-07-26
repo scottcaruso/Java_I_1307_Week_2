@@ -1,6 +1,6 @@
-/* Scott Caruso - Java 1307 - Week 2 Assignment
- * 
- * 7/18/2013
+/* Scott Caruso
+ * Java I 1307
+ * Week 3 Assignment
  */
 
 package com.scottcaruso.uielementgenerator;

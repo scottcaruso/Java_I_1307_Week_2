@@ -1,3 +1,7 @@
+/* Scott Caruso
+ * Java I 1307
+ * Week 3 Assignment
+ */
 package com.scottcaruso.utilities;
 
 import java.io.BufferedInputStream;
@@ -21,17 +25,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.Toast;
 
 public class RetrieveData {
 	
 	static String response = "";
-	
-	public static boolean doesThisUserExist(String textEntry)
-	{
-		//This function will be used to determine if the user exists in the Cloudant database
-		return false;
-	}
 	
 	public static String retrieveCloudantData(String urlString)
 	{
@@ -103,6 +101,7 @@ public class RetrieveData {
 		{
 			try 
 			{
+				//First, we compare what was entered in the MainActivity to the response from Cloudant to confirm that the user exists.
 				JSONObject thisObject = new JSONObject (result);
 				JSONArray rows = thisObject.getJSONArray("rows");
 				int numberOfItems = rows.length();
@@ -110,6 +109,8 @@ public class RetrieveData {
 				{
 					String thisJson = rows.getJSONObject(x).getString("doc");
 					String nameString = rows.getJSONObject(x).getJSONObject("doc").getString("username");
+					
+					//Then, if the user does, we call the methods to display his stats to the MainActivity.
 					if (nameString.compareTo(MainActivity.getTextThatWasEntered()) == 0)
 					{
 						MainActivity.setResultText(thisJson);
@@ -117,6 +118,7 @@ public class RetrieveData {
 						MainActivity.updateView(statDisplay);
 						break;
 					}
+					//Or, if we reach the end and find no match, we provide an appropriate dialog with options. Create New has not been configured.
 					if (x == numberOfItems-1)
 					{
 						Context currentContext = MainActivity.getCurrentContext();
@@ -133,7 +135,8 @@ public class RetrieveData {
 							@Override
 							public void onClick(View v) 
 							{
-								//Enter createNewUser flow		
+								Toast toast = Toast.makeText(MainActivity.getCurrentContext(), "Adding new documents to Cloudant is not yet configured! Try again next week.", Toast.LENGTH_SHORT);
+								toast.show();	
 							}
 						});
 						searchAgain.setOnClickListener(new View.OnClickListener() {

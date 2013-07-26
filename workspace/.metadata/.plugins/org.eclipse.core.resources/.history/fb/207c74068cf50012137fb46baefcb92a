@@ -1,0 +1,38 @@
+/* Scott Caruso - Java 1307 - Week 2 Assignment
+ * 
+ * 7/18/2013
+ */
+package com.scottcaruso.statcalculation;
+
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
+
+//This class is not used in this version, but will be used later on. It will generate Batting and Slugging averages based on real data.
+public class Averages {
+	
+	DecimalFormat thisFormat = new DecimalFormat ("0.000");
+	
+	//Formatting doesn't work in Week 2- it will be working when the data is fully surfaced in later weeks.
+	public static DecimalFormat setFormatting(NumberFormat format,int numberOfDigits)
+	{
+		thisFormat = new DecimalFormat( "0.000" );
+		return thisFormat;		
+	}
+
+	public static float battingAverage(int atbats, int hits)
+	{
+		float ba = (float) hits/atbats;
+		
+		return ba;
+	}
+	
+	public static float sluggingPercentage(int atbats, int hits, int doubles, int triples, int homeruns)
+	{
+		int totalBases = Total_Bases.totalBases(hits, doubles, triples, homeruns);
+		float slug = (float) totalBases/atbats;
+
+		return slug;
+	}
+	
+}

@@ -1,41 +1,23 @@
-/* Scott Caruso - Java 1307 - Week 2 Assignment
- * 
- * 7/18/2013
+/* Scott Caruso
+ * Java I 1307
+ * Week 3 Assignment
  */
 package com.scottcaruso.statcalculation;
 
-import java.text.NumberFormat;
-
-
-//This class is not used in this version, but will be used later on. It will generate Batting and Slugging averages based on real data.
 public class Averages {
 	
-	private static NumberFormat threeDecimals = NumberFormat.getInstance();
-	
-	//Formatting doesn't work in Week 2- it will be working when the data is fully surfaced in later weeks.
-	public static NumberFormat setFormatting(NumberFormat format,int numberOfDigits)
-	{
-		format.setMaximumFractionDigits(numberOfDigits);
-		format.setMinimumFractionDigits(numberOfDigits);
-		return format;		
-	}
-
+	//Calculate batting average
 	public static float battingAverage(int atbats, int hits)
 	{
-		NumberFormat thisFormat = setFormatting(threeDecimals, 3);
-		float ba = (float) hits/atbats;
-		thisFormat.format(ba);
-		
+		float ba = (float) hits/atbats;	
 		return ba;
 	}
 	
+	//Use the Total_Bases ENUM to generate a slugging percentage
 	public static float sluggingPercentage(int atbats, int hits, int doubles, int triples, int homeruns)
 	{
-		NumberFormat thisFormat = setFormatting(threeDecimals, 3);
 		int totalBases = Total_Bases.totalBases(hits, doubles, triples, homeruns);
-		float slug = (float) atbats/totalBases;
-		thisFormat.format(slug);
-		
+		float slug = (float) totalBases/atbats;
 		return slug;
 	}
 	

@@ -1,36 +1,20 @@
-/* Scott Caruso - Java 1307 - Week 2 Assignment
- * 
- * 7/18/2013
+/* Scott Caruso
+ * Java I 1307
+ * Week 3 Assignment
  */
 package com.scottcaruso.utilities;
-
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.scottcaruso.uielementgenerator.UIElementCreator;
 import com.scottcaruso.userinterface.CreateDisplay;
 import com.scottcaruso.userinterface.MainActivity;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class JSONManagement 
 {
-	
-	//creates JSON object based on the entered data
+	//creates a "game" JSON object based on data passed from the context from which it is called
 	public static JSONObject createJSONObject(String date,String opponent,String atbats,String hits,String doubles,String triples,String homeruns,String rbis)
 	{
 		JSONObject newGame = new JSONObject();
@@ -51,7 +35,7 @@ public class JSONManagement
 		}
 	}
 	
-	//NOTE - this is NOT working. I need to debug the Cloudant API to find out where I've screwed up, but am unlikely to finish prior to EOD Thursday.
+	//NOTE - most of this is NOT working. I need to debug the Cloudant API to find out where I've screwed up, but am unlikely to finish prior to EOD Thursday.
 	//I've commented much of it out for now so I can at least demonstrate posting this data to an appended JSON Object within the application.
 	public static void addObjectToLiveArray(JSONObject toadd)
 	{

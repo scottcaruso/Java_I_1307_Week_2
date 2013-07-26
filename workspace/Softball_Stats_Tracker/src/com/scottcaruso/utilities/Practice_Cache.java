@@ -1,3 +1,7 @@
+/* Scott Caruso
+ * Java I 1307
+ * Week 3 Assignment
+ */
 package com.scottcaruso.utilities;
 
 import android.app.Activity;
