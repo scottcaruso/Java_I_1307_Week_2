@@ -4,9 +4,19 @@
  */
 package com.scottcaruso.utilities;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.util.Log;
 
 import com.scottcaruso.userinterface.CreateDisplay;
 import com.scottcaruso.userinterface.MainActivity;
@@ -14,6 +24,10 @@ import com.scottcaruso.userinterface.MainActivity;
 
 public class JSONManagement 
 {
+	
+	static String id;
+	static JSONObject master;
+	
 	//creates a "game" JSON object based on data passed from the context from which it is called
 	public static JSONObject createJSONObject(String date,String opponent,String atbats,String hits,String doubles,String triples,String homeruns,String rbis)
 	{
@@ -35,75 +49,100 @@ public class JSONManagement
 		}
 	}
 	
-	//NOTE - most of this is NOT working. I need to debug the Cloudant API to find out where I've screwed up, but am unlikely to finish prior to EOD Thursday.
+	//NOTE - I've only gotten post to work once. I have no idea how.
+	//Everything seems fine, but I can't seem to find why its not actually putting the new data in.
 	//I've commented much of it out for now so I can at least demonstrate posting this data to an appended JSON Object within the application.
+	
+	//
 	public static void addObjectToLiveArray(JSONObject toadd)
 	{
-		try {
-			JSONObject master = new JSONObject(MainActivity.getResultText());
+		try 
+		{
+			master = new JSONObject(MainActivity.getResultText());
 			master.getJSONObject("stats").getJSONArray("Games").put(toadd);
+			master.remove("_rev");
 			MainActivity.setResultText(master.toString());
 			CreateDisplay statDisplay = new CreateDisplay(MainActivity.getCurrentContext());
+			id = master.getString("_id");
 			MainActivity.updateView(statDisplay);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-			/*String id = master.getString("_id");
-			String urlParameters = master.toString();
-			String request = "http://scottcaruso.cloudant.com/softballstats/"+id;
-			URL url;
-			try {
-				url = new URL(request);
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				url = null;
-			} 
-			HttpURLConnection connection;
-			try {
-				connection = (HttpURLConnection) url.openConnection();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				connection = null;
-			}           
-			connection.setDoOutput(true);
-			connection.setDoInput(true);
-			connection.setInstanceFollowRedirects(false); 
-			try {
-				connection.setRequestMethod("PUT");
-			} catch (ProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-			connection.setRequestProperty("Content-Type", "application/json"); 
-			connection.setRequestProperty("charset", "utf-8");
-			connection.setRequestProperty("Content-Length", "" + Integer.toString(urlParameters.getBytes().length));
-			connection.setUseCaches (false);
+        final String server = "scottcaruso.cloudant.com";
 
-			DataOutputStream stream;
-			try {
-				stream = new DataOutputStream(connection.getOutputStream ());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				stream = null;
-			}
-			try {
-				stream.writeBytes(urlParameters);
-				stream.flush();
-				stream.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			connection.disconnect();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-	}
+        URL url = null;
+        try {
+            url = new URL("http://" + server + "/softballstats/" + id);
+        } catch (MalformedURLException ex) {
+        	Log.d("Error","There was a problem with your URL construction.");
+        }
 
+        HttpURLConnection newConnection = null;
+        try {
+            // URL connection channel.
+            newConnection = (HttpURLConnection) url.openConnection();
+        } catch (IOException ex) {
+        	Log.d("Error","There was a problem with the connection.");
+        }
+
+        // Let the run-time system (RTS) know that we want input.
+        newConnection.setDoInput (true);
+
+        // Let the RTS know that we want to do output.
+        newConnection.setDoOutput (true);
+
+        // No caching, we want the real thing.
+        newConnection.setUseCaches (false);
+
+        try {
+        	newConnection.setRequestMethod("PUT");
+        } catch (ProtocolException ex) {
+        	Log.d("Error","There was a problem with the request method.");        }
+
+        // Specify the content type if needed.
+    	newConnection.setRequestProperty("Content-Type","application/json");
+        
+        try {
+        	newConnection.connect();
+        } catch (IOException ex) {
+        	Log.d("Error","There was a problem with connecting.");   
+        }
+
+        DataOutputStream output = null;
+        //DataInputStream input = null;
+
+        try {
+            output = new DataOutputStream(newConnection.getOutputStream());
+        } catch (IOException ex) {
+        	Log.d("Error","There was a problem with the output stream.");  
+        }
+
+        // Construct the POST data.
+        String content = master.toString();
+
+        // Send the request data.
+        try {
+            output.writeBytes(content);
+            output.flush();
+            output.close();
+        } catch (IOException ex) {
+        	Log.d("Error","There was a problem with the output stream.");  
+        }
+        
+        /* Get response data.
+        String str = null;
+        try {
+        	PostRequest pr = new PostRequest();
+        	pr.execute(url);
+            input = new DataInputStream (newConnection.getInputStream());
+            while (null != ((str = input.readUTF()))) {
+                Log.i("Response",str);
+            }
+            input.close ();
+        } catch (IOException ex) {
+        	Log.d("Error","There was a problem with the output stream.");  
+        }*/
+    }
 	
 	//Parse data for the stat display
 	public static JSONArray getListOfGames(String jsonString)
@@ -119,3 +158,4 @@ public class JSONManagement
 		}
 	}
 }
+
